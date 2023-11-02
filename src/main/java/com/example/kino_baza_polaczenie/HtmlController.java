@@ -17,9 +17,9 @@ public class HtmlController {
         this.movieRepository = movieRepository;
     }
 
-    @GetMapping("/example")
+    @GetMapping("/")
     public String exampleView(Model model) {
-        model.addAttribute("message", "Hello");
+        model.addAttribute("message", "Kino");
         return "index"; //nazwa pliku html
     }
     @GetMapping("/wszystkie-filmy")

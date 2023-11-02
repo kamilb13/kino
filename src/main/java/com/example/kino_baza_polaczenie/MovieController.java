@@ -18,10 +18,10 @@ public class MovieController {
         this.movieRepository = movieRepository;
     }
 
-    @GetMapping("/")
-    public String home(){
-        return String.format("KINO");
-    }
+//    @GetMapping("/")
+//    public String home(){
+//        return String.format("KINO");
+//    }
     @GetMapping("/filmy")
     public List<Movie> getAllMovies() {
         return movieRepository.findAll();
