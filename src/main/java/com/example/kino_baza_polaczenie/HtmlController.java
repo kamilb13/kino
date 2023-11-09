@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -19,7 +20,9 @@ public class HtmlController {
 
     @GetMapping("/")
     public String exampleView(Model model) {
-        model.addAttribute("message", "Kino");
+        //model.addAttribute("message", "Kino");
+        List<Movie> filmy = movieRepository.findAll();
+        model.addAttribute("filmy", filmy);
         return "index"; //nazwa pliku html
     }
     @GetMapping("/wszystkie-filmy")
@@ -36,10 +39,10 @@ public class HtmlController {
     }
 
     @PostMapping("/dodaj-film")
-    public String dodajFilm(@RequestParam String name, @RequestParam String type, @RequestParam int duration) {
-        Movie film = new Movie(duration ,name, type);
+    public String dodajFilm(@RequestParam String name, @RequestParam String description, @RequestParam LocalDate premier_date) {
+        Movie film = new Movie(name, description, premier_date);
         movieRepository.save(film);
-        return "redirect:/wszystkie-filmy"; // Przekierowanie na stronę z listą filmów
+        return "redirect:/"; // Przekierowanie na stronę z listą filmów
     }
 
 }

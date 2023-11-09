@@ -18,7 +18,7 @@ public class MovieController {
         this.movieRepository = movieRepository;
     }
 
-//    @GetMapping("/")
+    //    @GetMapping("/")
 //    public String home(){
 //        return String.format("KINO");
 //    }
@@ -30,9 +30,11 @@ public class MovieController {
     public String getMovieById(@PathVariable long id) {
         return movieRepository.findById(id).orElse(null).toString();
     }
+    /*
     @GetMapping("/dodaj-film/{name}")
     public Movie addMovie(@PathVariable String name){
-        Movie film = new Movie(120, name, "Crime");
+        Movie film = new Movie(name, 120, "Crime");
         return movieRepository.save(film);
     }
+     */
 }

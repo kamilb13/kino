@@ -5,26 +5,34 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "movie")
+@Table(name = "film")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "film_id")
     private int id;
+    @Column(name = "tytul")
     private String name;
-    private String type;
-    private int duration;
+    @Column(name = "opis")
+    private String description;
+    @Column(name = "data_premiery")
+    private LocalDate premier_date;
 
-    public Movie(String name) {
+    public Movie(String name, String description) {
         this.name = name;
+        this.description = description;
     }
-    public Movie(int duration, String name, String type) {
+
+    public Movie(String name, String description, LocalDate premier_date) {
         this.name = name;
-        this.type = type;
-        this.duration = duration;
+        this.description = description;
+        this.premier_date = premier_date;
     }
 
     @Override
@@ -32,8 +40,8 @@ public class Movie {
         return "Movie{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", duration=" + duration +
+                ", description='" + description + '\'' +
+                ", premier_date=" + premier_date +
                 '}';
     }
 }

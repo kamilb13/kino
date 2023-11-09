@@ -15,8 +15,8 @@
     <tr th:each="film : ${filmy}">
         <td th:text="${film.id}"></td>
         <td th:text="${film.name}"></td>
-        <td th:text="${film.type}"></td>
-        <td th:text="${film.duration}"></td>
+        <td th:text="${film.description}"></td>
+        <td th:text="${film.premier_date}"></td>
     </tr>
 </table>
 </body>
