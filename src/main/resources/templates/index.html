@@ -48,6 +48,20 @@
         <td th:text="${film.description}"></td>
         <td th:text="${film.premier_date}"></td>
     </tr>
+
+    <br><br><br>
+
+    <tr>
+        <th>ID</th>
+        <th>Imie</th>
+        <th>Nazwisko</th>
+    </tr>
+    <tr th:each="actor : ${actors}">
+        <td th:text="${film.id}"></td>
+        <td th:text="${film.name}"></td>
+        <td th:text="${film.description}"></td>
+        <td th:text="${film.premier_date}"></td>
+    </tr>
 </table>
 </body>
 </html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kino</title>
+</head>
+<body>
+
+<a href="/wszystkie-filmy">HOME</a>
+<a href="/wszystkie-filmy">FILMY</a>
+<a href="/wszystkie-filmy">CENNIK</a>
+<a href="/wszystkie-filmy">Wyświetl filmy</a>
+<a href="/dodaj-film-form">Dodaj film</a>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nazwa</th>
+        <th>Opis</th>
+        <th>Data premiery</th>
+    </tr>
+    <tr th:each="film : ${filmy}">
+        <td th:text="${film.id}"></td>
+        <td th:text="${film.name}"></td>
+        <td th:text="${film.description}"></td>
+        <td th:text="${film.premier_date}"></td>
+    </tr>
+</table>
+</body>
+</html>

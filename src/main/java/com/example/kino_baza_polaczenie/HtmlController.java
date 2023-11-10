@@ -1,5 +1,6 @@
 package com.example.kino_baza_polaczenie;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -12,11 +13,14 @@ import java.util.List;
 
 @Controller
 public class HtmlController {
-    private final MovieRepository movieRepository;
-
-    public HtmlController(MovieRepository movieRepository) {
+    @Autowired
+    private MovieRepository movieRepository;
+/*
+    public HtmlController(MovieRepository movieRepository) {  //dzieki Autowirde nie musze pisac konstruktora
         this.movieRepository = movieRepository;
     }
+
+ */
 
     @GetMapping("/")
     public String exampleView(Model model) {
@@ -32,17 +36,4 @@ public class HtmlController {
         System.out.println("Liczba filmów w modelu: " + filmy.size());
         return "allMovies"; // To odnosi się do pliku allMovies.html
     }
-
-    @GetMapping("/dodaj-film-form")
-    public String dodajFilmForm(Model model) {
-        return "dodaj-film"; //nazwa pliku html z formularzem
-    }
-
-    @PostMapping("/dodaj-film")
-    public String dodajFilm(@RequestParam String name, @RequestParam String description, @RequestParam LocalDate premier_date) {
-        Movie film = new Movie(name, description, premier_date);
-        movieRepository.save(film);
-        return "redirect:/"; // Przekierowanie na stronę z listą filmów
-    }
-
 }
