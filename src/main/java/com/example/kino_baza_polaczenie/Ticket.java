@@ -5,24 +5,30 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "bilet")
 public class Ticket {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bilet_id")
-    private int tikcet_id;
+    private int ticket_id;
+
     @Column(name = "cena")
-    private String price ;
+    private float value;
+
     @Column(name = "klient_klient_id")
-    private int client_fk;
+    private int clientId;
+
     @Column(name = "seans_seans_id")
-    private LocalDate seance_fk;
+    private int seanceId;
+
     @Column(name = "miejsce_miejsce_id")
-    private float seat_fk ;
+    private int seatId;
+
+
 }
+

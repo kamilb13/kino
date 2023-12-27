@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nazwa</th>
+        <th>Ilość miejsc</th>
+        <th>Ilość wejść</th>
+    </tr>
+    <tr th:each="hall : ${halls}">
+        <td th:text="${hall.hall_id}"></td>
+        <td th:text="${hall.name}"></td>
+        <td th:text="${hall.seats_number}"></td>
+        <td th:text="${hall.entry_number}"></td>
+    </tr>
+</table>
+</body>
+</html>

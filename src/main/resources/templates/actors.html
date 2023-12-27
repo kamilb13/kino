@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Imie</th>
+        <th>Nazwisko</th>
+        <th>Data urodzenia</th>
+        <th>Wynagrodzenie</th>
+    </tr>
+    <tr th:each="actor : ${actors}">
+        <td th:text="${actor.actor_id}"></td>
+        <td th:text="${actor.name}"></td>
+        <td th:text="${actor.lastName}"></td>
+        <td th:text="${actor.born}"></td>
+        <td th:text="${actor.salary}"></td>
+    </tr>
+</table>
 </body>
 </html>

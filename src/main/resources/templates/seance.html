@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Godzina</th>
+        <th>Data</th>
+        <th>ID Sala(klucz obcy)</th>
+        <th>ID Film(klucz obcy)</th>
+    </tr>
+    <tr th:each="seance : ${seances}">
+        <td th:text="${seance.seance_id}"></td>
+        <td th:text="${seance.time}"></td>
+        <td th:text="${seance.dateId}"></td>
+        <td th:text="${seance.saleId}"></td>
+        <td th:text="${seance.movieId}"></td>
+    </tr>
+</table>
+</body>
+</html>

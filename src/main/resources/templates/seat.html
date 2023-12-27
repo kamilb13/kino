@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Numer miejsca</th>
+    <th>ID Sala(klucz obcy)</th>
+  </tr>
+  <tr th:each="seat : ${seats}">
+    <td th:text="${seat.seat_id}"></td>
+    <td th:text="${seat.seatNumber}"></td>
+    <td th:text="${seat.hallId}"></td>
+  </tr>
+</table>
+</body>
+</html>

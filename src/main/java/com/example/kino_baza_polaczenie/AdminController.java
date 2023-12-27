@@ -11,19 +11,33 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
+//@RequestMapping("/admin")
 public class AdminController {
 
     private final MovieRepository movieRepository;
+    @Autowired
+    private ActorRepository actorRepository;
 
     public AdminController(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 
     @GetMapping("/admin")
+    public String admin(Model model){
+        List<Movie> filmy = movieRepository.findAll();
+        List<Actor> actors = actorRepository.findAll();
+        model.addAttribute("filmy", filmy);
+        model.addAttribute("actors", actors);
+        return "admin";
+    }
+
+    @GetMapping("/adminpanel")
     public String adminPanel(Model model){
         List<Movie> filmy = movieRepository.findAll();
+        List<Actor> actors = actorRepository.findAll();
         model.addAttribute("filmy", filmy);
-        return "admin";
+        model.addAttribute("actors", actors);
+        return "adminpanel";
     }
 
     @GetMapping("/dodaj-film-form")

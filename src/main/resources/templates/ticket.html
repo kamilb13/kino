@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Cena</th>
+        <th>ID Klient(klucz obcy)</th>
+        <th>ID Seans(klucz obcy)</th>
+        <th>ID Miejsce(klucz obcy)</th>
+    </tr>
+    <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.ticket_id}"></td>
+        <td th:text="${ticket.value}"></td>
+        <td th:text="${ticket.clientId}"></td>
+        <td th:text="${ticket.seanceId}"></td>
+        <td th:text="${ticket.seatId}"></td>
+    </tr>
+</table>
+</body>
+</html>

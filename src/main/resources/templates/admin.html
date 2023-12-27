@@ -25,6 +25,20 @@
         <td th:text="${film.description}"></td>
         <td th:text="${film.premier_date}"></td>
     </tr>
+    <br><br><br>
+
+    <tr>
+        <th>ID</th>
+        <th>Imie</th>
+        <th>Nazwisko</th>
+    </tr>
+    <tr th:each="actor : ${actors}">
+        <td th:text="${actor.actor_id}"></td>
+        <td th:text="${actor.name}"></td>
+        <td th:text="${actor.lastName}"></td>
+        <td th:text="${actor.born}"></td>
+        <td th:text="${actor.salary}"></td>
+    </tr>
 </table>
 </body>
 </html>
