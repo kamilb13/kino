@@ -10,15 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class HallController {
 
     @Autowired
     private HallRepository hallRepository;
 
     @GetMapping("/allhalls")
-    public String getAllHalls(Model model) {
-        model.addAttribute("halls", hallRepository.findAll());
-        return "hall";
+    public List<Hall> getAllHalls(Model model) {
+        return hallRepository.findAll();
     }
 }

@@ -14,7 +14,7 @@ public class Director {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "rezyser_id")
     private int director_id;
     @Column(name = "imie")
     private String name;

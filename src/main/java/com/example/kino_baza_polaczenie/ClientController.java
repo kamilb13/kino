@@ -10,15 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class ClientController {
 
     @Autowired
     private ClientRepository clientRepository;
 
-    @GetMapping("/allclient")
-    public String getAllClients(Model model) {
-        model.addAttribute("clients", clientRepository.findAll());
-        return "client";
+    @GetMapping("/allclients")
+    public List<Client> getAllClients(Model model) {
+        return clientRepository.findAll();
     }
 }

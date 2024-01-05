@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class SeatController {
 
     @Autowired
     private SeatRepository seatRepository;
 
     @GetMapping("/allseats")
-    public String getAllSeats(Model model) {
-        model.addAttribute("seats", seatRepository.findAll());
-        return "seat";
+    public List<Seat> getAllSeats(Model model) {
+        //model.addAttribute("seats", seatRepository.findAll());
+        return seatRepository.findAll();
     }
 }
