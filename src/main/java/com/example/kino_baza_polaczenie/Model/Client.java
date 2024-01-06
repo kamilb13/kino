@@ -1,25 +1,28 @@
-package com.example.kino_baza_polaczenie;
+package com.example.kino_baza_polaczenie.Model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "rezyser")
-public class Director {
+@Table(name = "klient")
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rezyser_id")
-    private int director_id;
+    @Column(name = "klient_id")
+    private int client_id;
+
     @Column(name = "imie")
     private String name;
+
     @Column(name = "nazwisko")
     private String lastName;
-    @Column(name = "rok_urodzenia")
-    private LocalDate born;
+
+    @Column(name = "email")
+    private String email;
 }

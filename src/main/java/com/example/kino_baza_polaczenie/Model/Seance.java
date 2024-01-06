@@ -1,4 +1,4 @@
-package com.example.kino_baza_polaczenie;
+package com.example.kino_baza_polaczenie.Model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

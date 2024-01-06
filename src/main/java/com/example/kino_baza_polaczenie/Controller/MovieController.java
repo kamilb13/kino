@@ -1,11 +1,11 @@
-package com.example.kino_baza_polaczenie;
+package com.example.kino_baza_polaczenie.Controller;
 
-import org.springframework.stereotype.Controller;
+import com.example.kino_baza_polaczenie.Model.Movie;
+import com.example.kino_baza_polaczenie.Repository.MovieRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.ui.Model;
 
 import java.util.List;
 

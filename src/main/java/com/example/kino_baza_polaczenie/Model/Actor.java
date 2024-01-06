@@ -1,4 +1,4 @@
-package com.example.kino_baza_polaczenie;
+package com.example.kino_baza_polaczenie.Model;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
@@ -23,5 +23,13 @@ public class Actor {
     @Column(name = "data_urodzenia")
     private LocalDate born;
     @Column(name = "wynagrodzenie")
-    private float salary ;
+    private double salary ;
+
+
+    public Actor(String name, String lastName, LocalDate born, double salary) {
+        this.name = name;
+        this.lastName = lastName;
+        this.born = born;
+        this.salary = salary;
+    }
 }
