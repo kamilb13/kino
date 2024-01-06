@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 
 function NewMovieForm(props) {
+
+
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
 
-    const submitMovie = (e) => {
-        e.preventDefault();
+    const submitMovie = () => {
+
 
         const formData = {
             name: title,
             description: description,
-            premier_date: date, // Zmiana na premier_date, zgodnie z oczekiwaniami kontrolera Springa
+            premier_date: date,
         };
+
+        setDescription('');
+        setTitle('');
+        setDate('');
 
         fetch('http://localhost:8080/dodaj-film', {
             method: 'POST',
@@ -21,33 +27,37 @@ function NewMovieForm(props) {
                 'Accept': 'application/json',
             },
             body: JSON.stringify(formData),
+
         })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json();
-            })
-            .then(data => {
-                // Handle success, e.g., show a success message
-                console.log('Success:', data);
 
-                // Clear the form fields
-                setDescription('');
-                setTitle('');
-                setDate('');
-            })
+                return response.json();
+            }).then(data => {
+            console.log('Success:', data);
+
+
+
+        })
             .catch(error => {
-                // Handle errors, e.g., show an error message
                 console.error('Error:', error);
             });
-        console.log('Form Data:', formData);
+
+        window.location.reload();
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Po załadowaniu strony
+            window.location.href = window.location.href + '#sectionID';
+        });
 
     };
 
     return (
         <div className="mt-5">
-            <form onSubmit={submitMovie}>
+            <form onSubmit={submitMovie} id="Form">
 
                     <div className="mb-3">
                         <label className="form-label">Tytuł</label>
@@ -84,12 +94,6 @@ function NewMovieForm(props) {
                         ></input>
 
                     </div>
-                    <button
-                        type="button"
-                        className="btn btn-primary mt-3"
-                        onClick={submitMovie}>
-                        Add Movie
-                    </button>
 
                 <button
                     type="submit"

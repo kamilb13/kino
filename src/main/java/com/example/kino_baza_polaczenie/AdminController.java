@@ -1,12 +1,10 @@
 package com.example.kino_baza_polaczenie;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -48,11 +46,9 @@ public class AdminController {
     }
 
     @PostMapping("/dodaj-film")
-    public String dodajFilm(@RequestParam String name, @RequestParam String description, @RequestParam LocalDate premier_date) {
-        Movie film = new Movie(name, description, premier_date);
+    public void dodajFilm(@RequestBody MovieRequest movieRequest) {
+        Movie film = new Movie(movieRequest.getName(), movieRequest.getDescription(), movieRequest.getPremier_date());
         movieRepository.save(film);
-        return "redirect:/"; // Przekierowanie na stronę z listą filmów
+
     }
-
-
 }
