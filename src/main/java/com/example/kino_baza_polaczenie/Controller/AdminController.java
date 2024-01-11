@@ -1,9 +1,21 @@
-package com.example.kino_baza_polaczenie.Controller;
+package com.example.kino_baza_polaczenie.controller;
 
-import com.example.kino_baza_polaczenie.Model.*;
+
 import com.example.kino_baza_polaczenie.Repository.ActorRepository;
+import com.example.kino_baza_polaczenie.Model.Movie;
+import com.example.kino_baza_polaczenie.Model.MovieRequest;
+import com.example.kino_baza_polaczenie.Model.Actor;
+import com.example.kino_baza_polaczenie.Model.Seance;
+import com.example.kino_baza_polaczenie.Model.ActorRequest;
+import com.example.kino_baza_polaczenie.Model.Director;
+import com.example.kino_baza_polaczenie.Model.DirectorRequest;
+import com.example.kino_baza_polaczenie.Model.Hall;
+import com.example.kino_baza_polaczenie.Model.HallRequest;
 import com.example.kino_baza_polaczenie.Repository.DirectorRepository;
 import com.example.kino_baza_polaczenie.Repository.MovieRepository;
+import com.example.kino_baza_polaczenie.Repository.HallRepository;
+import com.example.kino_baza_polaczenie.Repository.SeanceRepository;
+import com.example.kino_baza_polaczenie.model.SeanceRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +31,16 @@ public class AdminController {
     private final MovieRepository movieRepository;
 
     @Autowired
+    private HallRepository hallRepository;
+
+    @Autowired
     private ActorRepository actorRepository;
+
     @Autowired
     private DirectorRepository directorRepository;
+
+    @Autowired
+    private SeanceRepository seanceRepository;
 
     public AdminController(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
@@ -69,6 +88,21 @@ public class AdminController {
         directorRepository.save(director);
         return "redirect:/";
     }
+
+    @PostMapping("/dodaj-sale")
+    public String dodajSale(@RequestBody HallRequest hallRequest){
+        Hall hall = new Hall(hallRequest.getName(), hallRequest.getSeats_number(), hallRequest.getEntry_number());
+        hallRepository.save(hall);
+        return "redirect:/";
+    }
+
+    @PostMapping("/dodaj-seans")
+    public String dodajSale(@RequestBody SeanceRequest seanceRequest){
+        Seance seance = new Seance(seanceRequest.getTime(), seanceRequest.getDateId(), seanceRequest.getSaleId(), seanceRequest.getMovieId());
+        seanceRepository.save(seance);
+        return "redirect:/";
+    }
+
 
 
 }

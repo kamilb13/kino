@@ -20,24 +20,26 @@ const MovieList = () => {
     }, []); // Pusta tablica oznacza, że useEffect wywoła się tylko raz po zamontowaniu komponentu
 
     return (
-        <div>
-            <h1>Lista filmów</h1>
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nazwa</th>
-                </tr>
-                </thead>
-                <tbody>
-                {movies.map(movie => (
-                    <tr key={movie.id}>
-                        <td>{movie.id}.</td>
-                        <td>{movie.name}</td>
+        <div className="container d-flex justify-content-center">
+            <div>
+                <h1>Lista filmów</h1>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nazwa</th>
                     </tr>
-                ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {movies.map(movie => (
+                        <tr key={movie.id}>
+                            <td>{movie.id}.</td>
+                            <td>{movie.name}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

@@ -32,4 +32,11 @@ public class Seance {
 
     @Column(name = "film_film_id")
     private int movieId;
+
+    public Seance(LocalTime time, LocalDate dateId, int saleId, int movieId) {
+        this.time = time;
+        this.dateId = dateId;
+        this.saleId = saleId;
+        this.movieId = movieId;
+    }
 }

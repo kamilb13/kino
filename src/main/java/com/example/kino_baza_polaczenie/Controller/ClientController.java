@@ -1,4 +1,4 @@
-package com.example.kino_baza_polaczenie.Controller;
+package com.example.kino_baza_polaczenie.controller;
 
 import com.example.kino_baza_polaczenie.Model.Client;
 import com.example.kino_baza_polaczenie.Repository.ClientRepository;

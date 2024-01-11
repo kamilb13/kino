@@ -23,4 +23,10 @@ public class Hall {
     @Column(name = "ilosc_wejsc")
     private int entry_number;
 
+
+    public Hall(String name, int seats_number, int entry_number) {
+        this.name = name;
+        this.seats_number = seats_number;
+        this.entry_number = entry_number;
+    }
 }
