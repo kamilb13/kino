@@ -28,6 +28,7 @@ const ActorList = () => {
                     <th>ID</th>
                     <th>Imie</th>
                     <th>Nazwisko</th>
+                    <th>Wynagrodzenie</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,7 @@ const ActorList = () => {
                         <td>{actor.actor_id}.</td>
                         <td>{actor.name}</td>
                         <td>{actor.lastName}</td>
+                        <td>{actor.salary}</td>
                     </tr>
                 ))}
                 </tbody>
