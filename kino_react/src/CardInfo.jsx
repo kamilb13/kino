@@ -10,9 +10,16 @@ const CartInfo = ({ cart, onClose }) => {
                 <ul>
                     {cart.map((item, index) => (
                         <li key={index}>
-                            {item.time.substring(0, 5)} - {item.name}
+                            {item.time} - {item.name}
+                            {item.selectedSeats.length > 0 && (
+                                <div>
+                                    Wybrane miejsca: {item.selectedSeats.join(', ')}
+                                </div>
+                            )}
                         </li>
                     ))}
+
+
                 </ul>
             </div>
         </div>

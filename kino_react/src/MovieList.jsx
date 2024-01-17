@@ -20,7 +20,7 @@ const MovieList = () => {
     }, []); // Pusta tablica oznacza, że useEffect wywoła się tylko raz po zamontowaniu komponentu
 
     return (
-        <div className="container d-flex justify-content-center">
+        <div>
             <div>
                 <h1>Lista filmów</h1>
                 <table>

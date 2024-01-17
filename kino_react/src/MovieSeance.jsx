@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import CardInfo from './CardInfo';
+import SeatSelection from './SeatSelection';
 
 const MovieSeance = () => {
     const [seances, setSeances] = useState([]);
     const [movies, setMovies] = useState([]);
     const [cart, setCart] = useState([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isSeatSelectionOpen, setIsSeatSelectionOpen] = useState(false);
+    const [selectedSeanceKey, setSelectedSeanceKey] = useState('');
 
     useEffect(() => {
         const fetchSeances = async () => {
@@ -35,11 +38,16 @@ const MovieSeance = () => {
     const handleAddToCart = (seanceId) => {
         const selectedSeance = seances.find(seance => seance.seance_id === seanceId);
         const selectedMovie = movies.find(movie => movie.id === selectedSeance.movieId);
-        console.log("Selected Seance:", selectedSeance);
-        console.log("Selected Movie:", selectedMovie);
-        setCart([...cart, { time: selectedSeance.time, name: selectedMovie?.name }]);
-        console.log(`Dodano do koszyka seans o ID: ${seanceId}`);
+        const uniqueKey = `${selectedSeance.seance_id}_${selectedSeance.movieId}_${cart.length + 1}`;
+
+        // Dodajemy nowy element do koszyka
+        const newCartItem = { key: uniqueKey, seanceId, time: selectedSeance.time, name: selectedMovie?.name, selectedSeats: [] };
+        setCart([...cart, newCartItem]);
+
+        setSelectedSeanceKey(uniqueKey);
+        setIsSeatSelectionOpen(true);
     };
+
 
     const handleToggleCart = () => {
         setIsCartOpen(!isCartOpen);
@@ -47,14 +55,23 @@ const MovieSeance = () => {
 
     const handleCloseCartInfo = () => {
         setIsCartOpen(false);
+        setIsSeatSelectionOpen(false);
     };
 
-    console.log('Movies:', movies);
-    console.log('Seances:', seances);
-    console.log('Cart:', cart);
+    const handleSeatSelected = (selectedSeats) => {
+        const updatedCart = cart.map(item => {
+            if (item.key === selectedSeanceKey) {
+                return { ...item, selectedSeats };
+            }
+            return item;
+        });
+
+        setCart(updatedCart);
+        setIsSeatSelectionOpen(false);
+    };
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5" >
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <h1>Lista Seansów i Filmów</h1>
                 <div className="cart-icon" onClick={handleToggleCart} style={{ cursor: 'pointer', fontSize: '24px' }}>
@@ -63,6 +80,13 @@ const MovieSeance = () => {
                 </div>
             </div>
             {isCartOpen && <CardInfo cart={cart} onClose={handleCloseCartInfo} />}
+            {isSeatSelectionOpen && (
+                <SeatSelection
+                    onSeatSelected={handleSeatSelected}
+                    onCancel={handleCloseCartInfo}
+                    selectedSeats={cart.find(item => item.key === selectedSeanceKey)?.selectedSeats || []}
+                />
+            )}
             <table className="table">
                 <thead>
                 <tr>
@@ -89,6 +113,8 @@ const MovieSeance = () => {
                 ))}
                 </tbody>
             </table>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/8ugaeA-nMTc?si=78SQ-qQ0KZbJfuOR" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         </div>
     );
 };
