@@ -1,15 +1,6 @@
 package com.example.kino_baza_polaczenie.controller;
+import com.example.kino_baza_polaczenie.model.*;
 import com.example.kino_baza_polaczenie.repository.ActorRepository;
-import com.example.kino_baza_polaczenie.model.Movie;
-import com.example.kino_baza_polaczenie.model.MovieRequest;
-import com.example.kino_baza_polaczenie.model.Actor;
-import com.example.kino_baza_polaczenie.model.Seance;
-import com.example.kino_baza_polaczenie.model.ActorRequest;
-import com.example.kino_baza_polaczenie.model.Director;
-import com.example.kino_baza_polaczenie.model.DirectorRequest;
-import com.example.kino_baza_polaczenie.model.Hall;
-import com.example.kino_baza_polaczenie.model.HallRequest;
-import com.example.kino_baza_polaczenie.model.SeanceRequest;
 import com.example.kino_baza_polaczenie.repository.DirectorRepository;
 import com.example.kino_baza_polaczenie.repository.MovieRepository;
 import com.example.kino_baza_polaczenie.repository.HallRepository;

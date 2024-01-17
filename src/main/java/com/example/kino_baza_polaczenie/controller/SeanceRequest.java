@@ -1,4 +1,4 @@
-package com.example.kino_baza_polaczenie.model;
+package com.example.kino_baza_polaczenie.controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
