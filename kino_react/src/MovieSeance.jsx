@@ -9,6 +9,7 @@ const MovieSeance = () => {
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isSeatSelectionOpen, setIsSeatSelectionOpen] = useState(false);
     const [selectedSeanceKey, setSelectedSeanceKey] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         const fetchSeances = async () => {
@@ -71,9 +72,16 @@ const MovieSeance = () => {
     };
 
     return (
+
         <div className="container mt-5" >
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <h1>Lista Seansów i Filmów</h1>
+                <input
+                    type="text"
+                    placeholder="Szukaj filmu..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
                 <div className="cart-icon" onClick={handleToggleCart} style={{ cursor: 'pointer', fontSize: '24px' }}>
                     🛒
                     {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
@@ -96,8 +104,13 @@ const MovieSeance = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {seances.map((seance) => (
-                    <tr key={seance.seance_id}>
+                {seances
+                    .filter((seance) => {
+                        const movieName = movies.find(movie => movie.id === seance.movieId)?.name || '';
+                        return movieName.toLowerCase().includes(searchTerm.toLowerCase());
+                    })
+                    .map((seance) => (
+                        <tr key={seance.seance_id}>
                         <td>{seance.time.substring(0, 5)}</td>
                         <td>
                             <strong>Nazwa filmu:</strong> {movies.find(movie => movie.id === seance.movieId)?.name}
