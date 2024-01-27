@@ -20,8 +20,7 @@ const AdminPanel = ({ children }) => {
     const[showAddNewSeanceForm, setshowAddNewSeanceForm] = useState(false);
 
     const style = {
-        backgroundColor: 'rgb(51, 190, 160)',
-        //
+        backgroundColor: 'rgb(117,180,180)',
     };
 
     return (

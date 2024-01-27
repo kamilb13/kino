@@ -1,22 +1,17 @@
 import React from 'react';
 import AdminPanel from './AdminPanel';
 import MainPage from './MainPage';
-import SeanceList from "./SeanceList";
-import MovieList from "./MovieList";
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
-
-  return (
-      <div>
-        <MainPage/>
-          {/* <SeanceList/>*/}
-          {/* <MovieList/>*/}
-        {/* komentarz <IndexPanel/> - strona dla klienta*/}
-        {/* //<AdminPanel/>*/}
-      </div>
-      //sadasdasdas
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/AdminPanel" element={<AdminPanel />} />
+            </Routes>
+        </Router>
+    );
 };
 
 export default App;
