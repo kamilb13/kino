@@ -17,7 +17,6 @@ public class SeatController {
 
     @GetMapping("/allseats")
     public List<Seat> getAllSeats(Model model) {
-        //model.addAttribute("seats", seatRepository.findAll());
         return seatRepository.findAll();
     }
 }

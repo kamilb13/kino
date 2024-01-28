@@ -7,7 +7,7 @@ const SeanceList = () => {
         // Funkcja do pobierania filmów z backendu
         const fetchSeances = async () => {
             try {
-                const response = await fetch('http://localhost:8080/allseances'); // Podaj odpowiedni URL do swojego backendu
+                const response = await fetch('http://localhost:8080/allseances');
                 const data = await response.json();
                 console.log(data);
                 setSeances(data);
@@ -16,8 +16,8 @@ const SeanceList = () => {
             }
         };
 
-        fetchSeances(); // Wywołaj funkcję pobierającą dane
-    }, []); // Pusta tablica oznacza, że useEffect wywoła się tylko raz po zamontowaniu komponentu
+        fetchSeances();
+    }, []);
 
     return (
         <div>

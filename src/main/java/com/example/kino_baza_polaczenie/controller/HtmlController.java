@@ -13,16 +13,9 @@ import java.util.List;
 public class HtmlController {
     @Autowired
     private MovieRepository movieRepository;
-/*
-    public HtmlController(MovieRepository movieRepository) {  //dzieki Autowirde nie musze pisac konstruktora
-        this.movieRepository = movieRepository;
-    }
-
- */
 
     @GetMapping("/")
     public String exampleView(Model model) {
-        //model.addAttribute("message", "Kino");
         List<Movie> filmy = movieRepository.findAll();
         model.addAttribute("filmy", filmy);
         return "index"; //nazwa pliku html

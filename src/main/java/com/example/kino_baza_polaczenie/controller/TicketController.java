@@ -17,7 +17,6 @@ public class TicketController {
 
     @GetMapping("/alltickets")
     public List<Ticket> getAllTickets(Model model) {
-        //model.addAttribute("tickets", ticketRepository.findAll());
         return ticketRepository.findAll();
     }
 }

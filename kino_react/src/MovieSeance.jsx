@@ -78,7 +78,7 @@ const MovieSeance = () => {
                 <h1>Lista Seansów i Filmów</h1>
                 <input
                     type="text"
-                    placeholder="Szukaj filmu..."
+                    placeholder="Szukaj film..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -104,8 +104,7 @@ const MovieSeance = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {seances
-                    .filter((seance) => {
+                {seances.filter((seance) => {
                         const movieName = movies.find(movie => movie.id === seance.movieId)?.name || '';
                         return movieName.toLowerCase().includes(searchTerm.toLowerCase());
                     })

@@ -7,23 +7,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000") // Musi byc inaczej serwery się nie widzą chyba?
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ActorController {
 
     @Autowired
     ActorRepository actorRepository;
-/*
-        List<Movie> filmy = movieRepository.findAll();
-        model.addAttribute("filmy", filmy);
-        System.out.println("Liczba filmów w modelu: " + filmy.size());
-        return "allMovies"; // To odnosi się do pliku allMovies.html
- */
+
     @GetMapping("/allActors")
     public List<Actor> allActors(Model model){
-//        List<Actor> actors = actorRepository.findAll();
-//        model.addAttribute("actors", actors);
-//        return "actors";
         return actorRepository.findAll();
     }
 
@@ -33,7 +25,7 @@ public class ActorController {
         actor = actorRepository.findById(id).orElse(null);
         model.addAttribute("actor", actor);
         /*TODO
-        dokonczyc
+        dokonczyc w przyszlosci
         */
         return null;
     }

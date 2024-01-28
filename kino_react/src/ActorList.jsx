@@ -4,10 +4,10 @@ const ActorList = () => {
     const [actors, setActors] = useState([]);
 
     useEffect(() => {
-        // Funkcja do pobierania filmów z backendu
+
         const fetchActors = async () => {
             try {
-                const response = await fetch('http://localhost:8080/allActors'); // Podaj odpowiedni URL do swojego backendu
+                const response = await fetch('http://localhost:8080/allActors');
                 const data = await response.json();
                 //console.log(data);
                 setActors(data);
@@ -16,8 +16,8 @@ const ActorList = () => {
             }
         };
 
-        fetchActors(); // Wywołaj funkcję pobierającą dane
-    }, []); // Pusta tablica oznacza, że useEffect wywoła się tylko raz po zamontowaniu komponentu
+        fetchActors();
+    }, []);
 
     return (
         <div>
